@@ -110,10 +110,16 @@ public class BurgerTest {
         String actual = burger.getReceipt();
 
         // Проверяем, что чек содержит ожидаемые элементы:
-        assertTrue(actual.contains("(==== black bun ====)")); // Название булочки
-        assertTrue(actual.contains("= sauce hot sauce ="));   // Первый ингредиент
-        assertTrue(actual.contains("= filling cutlet ="));    // Второй ингредиент
-        assertTrue(actual.contains("Price:"));               // Строка с ценой
-        assertTrue(actual.contains("500"));                  // Общая цена (100*2 + 100 + 200 = 500)
+        String expected = String.join(System.lineSeparator(),
+                "(==== black bun ====)",
+                "= sauce hot sauce =",
+                "= filling cutlet =",
+                "(==== black bun ====)",
+                "",
+                "Price: 500,000000",
+                ""
+        );
+
+        assertEquals(expected, actual);
     }
 }
